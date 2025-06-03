@@ -1,3 +1,7 @@
+'''
+Hardware Unit Test
+'''
+
 from machine import Pin
 from machine import PWM
 
