@@ -32,18 +32,10 @@ class Led_Light(Pin):
     
     @led_light_state.setter
     def led_light_state(self, value):
-        if value == 0:
+        if value == 1:
             self.off()
-        elif value == 1:
+        elif value == 0:
             self.on()
 
 
 red_light = Led_Light(3, False, False)
-
-while True:
-    print(red_light.led_light_state)
-    red_light.led_light_state = 1
-    sleep(0.25)
-    print(red_light.led_light_state)
-    red_light.led_light_state = 0
-    sleep(0.25)
