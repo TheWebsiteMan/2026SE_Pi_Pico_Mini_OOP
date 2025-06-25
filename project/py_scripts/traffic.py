@@ -1,7 +1,7 @@
 from led_light import Led_Light
 from time import sleep, time
 
-red_light = Led_Light(3, False, False)
+red_light = Led_Light(3, True, False)
 
 
 print("Testing on()")
@@ -36,3 +36,6 @@ if red_light.value() == 0:
 else:
     raise(ValueError)
 sleep(0.2)
+
+print("Testing flash()")
+red_light.flash()

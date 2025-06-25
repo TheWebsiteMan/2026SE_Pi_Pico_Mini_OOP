@@ -1,5 +1,6 @@
-from machine import Pin, PWM
 from time import sleep, time
+from machine import Pin, PWM
+
 
 
 class Audio_Notification(PWM):

@@ -56,7 +56,7 @@ class PedestrianSubsystem:
     def show_warning(self):
         if self.__debug:
             print("Pedestrian: Red FLASHING")
-        self.__red.flashing()
+        self.__red.flash()
         self.__green.off()
         self.__buzzer.warning_off()
     

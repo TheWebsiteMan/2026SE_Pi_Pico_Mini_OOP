@@ -4,8 +4,7 @@ from led_light import Led_Light
 
 
 
-red_light = Led_Light(3, False, False)
+red_light = Led_Light(3, True, False)
 
-while True:
-    red_light.flash()
-    sleep(3)
+red_light.on()
+red_light.flash()
