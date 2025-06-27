@@ -20,7 +20,7 @@ lcd = I2cLcd(i2c, I2C_ADDR, 2, 16)
 while True:
     # putstr method allows printing of the text in the LCD screen
     # for other methods that can be used, check lcd_api module
-    lcd.putstr("i am a dumb \nmicrocontroller")
+    lcd.putstr("test")
     print("working")
     sleep(5)        # "Hello world!" text would be displayed for 5 secs
     lcd.clear()

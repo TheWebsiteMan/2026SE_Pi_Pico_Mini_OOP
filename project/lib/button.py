@@ -1,5 +1,6 @@
-from machine import Pin
 from time import ticks_ms, ticks_diff
+from machine import Pin
+
 
 class Pedestrian_Button(Pin):
     def __init__(self, pin, debug = False):
@@ -8,21 +9,18 @@ class Pedestrian_Button(Pin):
         self.__pin = pin
         self.__last_pressed = 0
         self.__pedestrian_waiting = False
-        self.button_state
         # set up interrupt on rising edge
         self.irq(trigger=Pin.IRQ_RISING, handler=self.callback)
     
-    @property
-    def button_state(self):
-        if self.__debug:
-            print(f"Button connected to Pin {self.__pin} is {"WAITING" if self.__pedestrian_waiting else "NOT WAITING"}")
-        return self.__pedestrian_waiting
-    
-    @button_state.setter
-    def button_state(self, value:bool):
-        self.__pedestrian_waiting = value
-        if self.__debug:
-            print(f"Button state on Pin {self.__pin} set to {value}")
+    def button_state(self, value=None):
+        if value is None:
+            if self.__debug:
+                print(f"Button state on Pin {self.__pin} is {'WAITING' if self.__pedestrian_waiting else 'NOT WAITING'}")
+            return self.__pedestrian_waiting
+        else:
+            self.__pedestrian_waiting = bool(value)
+            if self.__debug:
+                print(f"Button state on Pin {self.__pin} set to {self.__pedestrian_waiting}")
     
     def callback(self, pin):
         current_time = ticks_ms()

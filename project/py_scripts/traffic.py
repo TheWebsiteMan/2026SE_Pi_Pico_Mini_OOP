@@ -1,5 +1,6 @@
-from led_light import Led_Light
 from time import sleep, time
+from led_light import Led_Light
+
 
 red_light = Led_Light(3, True, False)
 

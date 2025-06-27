@@ -28,3 +28,9 @@ class Audio_Notification(PWM):
         self.duty_u16(32768)  
         sleep(duration / 1000)
         self.duty_u16(0)
+
+    def sing(self):
+        notes = int(input("Notes: "))
+        print("test")
+        for _ in range(notes):
+            self.beep(freq=int(input("Frequency: ")), duration=int(input("Length: ")))

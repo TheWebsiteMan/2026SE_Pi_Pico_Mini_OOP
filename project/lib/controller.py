@@ -102,5 +102,32 @@ class Controller:
         if self.__debug:
             print("System: CRITICAL ERROR")
         self.__pedestrian_signals.show_stop()
-        self.__traffic_lights.show_amber()
+        self.__traffic_lights.show_amber() #implement flash somewhere
+    
+    def update(self):
+        time_now = time()
+        if self.state == "IDLE":
+            self.set_idle_state()
+            if self.__pedestrian_signals.is_button_pressed() and time_now - self.last_state_change >= 5:
+                self.state = "CHANGING"
+                self.last_state_change = time_now
+        elif self.state == "CHANGING":
+            self.set_change_state()
+            if time_now - self.last_state_change >= 5:
+                self.state = "WALK"
+                self.last_state_change = time_now
+        elif self.state == "WALK":
+            self.set_walk_state()
+            if time_now - self.last_state_change >= 5:
+                self.state = "WARNING"
+                self.last_state_change = time_now
+        elif self.state == "WARNING":
+            self.set_warning_state()
+            if time_now - self.last_state_change >= 5:
+                self.state = "IDLE"
+                self.last_state_change = time_now
+                self.__pedestrian_signals.reset_button()
+        else:
+            self.error_state()
+
 

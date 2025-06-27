@@ -1,5 +1,6 @@
-from machine import Pin
 from time import sleep, time
+from machine import Pin
+
 
 class Led_Light(Pin):
     def __init__(self, pin, flashing=False, debug=False):
